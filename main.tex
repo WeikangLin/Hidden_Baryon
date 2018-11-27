@@ -1,0 +1,122 @@
+\documentclass[preprint,nofootinbib,aps,prd,showpacs,superscriptaddress,groupedaddress,amsmath,longbibliography]{revtex4-1}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs,mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage[colorlinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{tabularx}
+\usepackage{times}
+\usepackage{braket}
+\usepackage{dcolumn} % For some tables
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{pifont}
+\usepackage{enumitem}
+
+\definecolor{darkblue}{cmyk}{1, 1, 0, 0}
+\hypersetup{colorlinks=true,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkblue}
+
+
+
+
+\begin{document}
+\title{Hidden Baryon}
+\date{}
+%\maketitle
+
+\section{Summary of modified equations for hidden baryon}
+Hidden baryon began with and only with massless hidden quarks and gluons. Their temperature $T_h$ is different from the temperature of the standard model particles. After $T_h$ drops below the mass of the hidden baryon ($m_b$), those relativistic quarks transition to massive and non-relativistic baryons. Since $T_h$ is known, the transition scale factor ($a_{\rm{T}}$) is a free parameters. 
+\subsection{Background level}
+The average energy density of the hidden baryon is taken to be piecewise function of $a$, representing a sudden relativistic-to-nonrelativistic transition,
+\begin{equation}\label{eq:HDM-density}
+    \bar{\rho}_{\rm{HB}} = 
+    \begin{dcases} 
+      \frac{\Omega_{\rm{HB}}\rho_{\rm{c}}}{a^3}\,, & ~~a > a_{\rm{T}}\,, \\
+      \frac{\Omega_{\rm{HB}}\rho_{\rm{c}}a_{\rm{T}}}{a^4}\,, & ~~a < a_{\rm{T}}\,,
+   \end{dcases}
+\end{equation}
+where the critical density $\rho_{\rm{c}}=\frac{3}{8\pi G}H_0^2$ and $\Omega_{\rm{HB}}$ is the hidden baryon energy fraction today.
+
+\subsection{Perturbations}
+Compared to the standard case, hidden baryon is relativistic when $a<a_{\rm{T}}$. In that case, we take the pressure perturbation $\delta p_{\rm{HB}} = \frac{1}{3}\delta \rho_{\rm{HB}}$ but we ignore the its pressure anisotropy. In addition, the hidden baryon velocity potential ($\delta u_{\rm{HB}}$) needs to be included. Our discussion will be in Synchronous gauge and in Fourier modes with the index of co-moving wavenumber $q$ suppressed.
+
+Time $t$ is cosmic time, better to express everything in conformal time $\eta$.  For details, see \cite[CH 6]{S.W.cosmo.}. Equations can not directly be implemented in \textsc{camb}, so further transformation is needed.
+
+\subsubsection{The standard case}
+The potential $\psi$:  
+\begin{equation}\label{eq:potential-sd}
+    \frac{d}{dt}(a^2\psi) = -4\pi Ga^2(\bar{\rho}_{\rm{DM}}\delta_{\rm{DM}}+\bar{\rho}_{\rm{B}}\delta_{\rm{B}}+\frac{8}{3}\bar{\rho}_{\gamma}\delta_{\gamma}+\frac{8}{3}\bar{\rho}_{\nu}\delta_{\nu})\,.
+\end{equation}
+Note that,
+\begin{equation}\label{eq:delta-definition}
+    \delta_i \equiv \frac{\delta_i}{\bar{\rho}_i+\bar{p}_i}\,.
+\end{equation}
+We will use the above definition for the hidden baryon. Since there is a sudden change in hidden baryon pressure, there will be sudden change in $\delta_i$ at $a_{\rm{T}}$.
+
+The equation for $\delta_{\rm{DM}}$:
+\begin{equation}\label{eq:delta_DM-dot-sq}
+    \dot{\delta}_{\rm{DM}} = -\psi\,.
+\end{equation}
+
+Adiabatic initial condition:
+\begin{equation}\label{eq:delta_DM_init-sq}
+    \delta_{\rm{DM}} = \frac{q^2t^2\mathcal{R}^0_q}{a^2}\,,
+\end{equation}
+where $\mathcal{R}^0_q$ is the primordial curvature perturbation.
+
+\subsubsection{The hidden baryon case}
+
+The potential $\psi$:  
+\begin{equation}\label{eq:potential-hb}
+    \frac{d}{dt}(a^2\psi) = 
+    \begin{dcases}
+    -4\pi Ga^2(\frac{8}{3}\bar{\rho}_{\rm{HB}}\delta_{\rm{HB}}+\bar{\rho}_{\rm{B}}\delta_{\rm{B}}+\frac{8}{3}\bar{\rho}_{\gamma}\delta_{\gamma}+\frac{8}{3}\bar{\rho}_{\nu}\delta_{\nu})\,, & ~~ a< a_{\rm{T}} \\
+    -4\pi Ga^2(\bar{\rho}_{\rm{HB}}\delta_{\rm{HB}}+\bar{\rho}_{\rm{B}}\delta_{\rm{B}}+\frac{8}{3}\bar{\rho}_{\gamma}\delta_{\gamma}+\frac{8}{3}\bar{\rho}_{\nu}\delta_{\nu})\,, & ~~ a> a_{\rm{T}}
+    \end{dcases}
+\end{equation}
+
+The equation for $\delta_{\rm{HB}}$:
+\begin{equation}\label{eq:delta_hb-dot}
+    \dot{\delta}_{\rm{HB}} = 
+    \begin{dcases}
+    \frac{q^2}{a^2}\delta u_{\rm{HB}} -\psi\,,  &  ~~ a< a_{\rm{T}} \\
+      -\psi\,, & ~~ a> a_{\rm{T}}
+    \end{dcases}
+\end{equation}
+
+The equation for $\delta u_{\rm{HB}}$:
+\begin{equation}\label{eq:v_hb-dot}
+    \begin{dcases}
+     \frac{d}{dt}\left(\frac{\delta u_{\rm{HB}}}{a}\right) =-\frac{1}{3a}\delta_{\rm{HB}}\,, &  ~~a<a_{\rm{T}} \\
+     \delta u_{\rm{HB}} = 0\,, & ~~ a> a_{\rm{T}}
+    \end{dcases}
+\end{equation}
+
+
+
+{\flushleft \textbf{Adiabatic initial conditions:}}
+\begin{align}
+    \delta_{\rm{HB}} & = \frac{q^2t^2\mathcal{R}^0_q}{a^2}\,,\label{eq:delta_hb_init}\\
+    \delta u_{\rm{HB}} & = -\frac{2t^3q^2\mathcal{R}^0_q}{a^2}\,.\label{eq:v_hb_init}
+\end{align}
+
+{\flushleft \textbf{Boundary conditions at $a_{\rm{T}}$:}}
+\begin{align}
+    \psi(a^{+}_{\rm{T}}) &=  \psi(a^{-}_{\rm{T}})\,, \label{eq:psi-bc}\\ 
+    \delta_{\rm{HB}}(a^{+}_{\rm{T}}) &=  \frac{4}{3} \delta_{\rm{HB}}(a^{-}_{\rm{T}})\,. \label{eq:delta_hb-bc}
+\end{align}
+
+
+\subsection{Paramterization of $a_{\rm{T}}$}
+\begin{equation}\label{eq:a_t-parameterization}
+    R^{\rm{T}}_{\rm{eq}} = \frac{a_{\rm{T}}}{a_{\rm{eq}}}\,,
+\end{equation}
+where $a_{\rm{eq}} = \frac{4.15\times10^{-5}}{\Omega_{\rm{m}}h^2}$ is the scale factor at radiation-matter equation in the standard case. 
+
+
+\bibliographystyle{plain}
+\bibliography{HD_reference}
+
+\end{document}
